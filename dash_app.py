@@ -20,7 +20,7 @@ app.layout = html.Div(children=[
     html.Div(["Numerator: ",
               dcc.Input(id='num', value='x^2 + 4*x', type='text')]),
     html.Div(["Denominator: ",
-              dcc.Input(id='denom', value='x^4 + 2*x^3 + 4*x', type='text')]),
+              dcc.Input(id='denom', value='x^4 + 2*x^3 + 4*x**2', type='text')]),
 
     html.Div('''Set window boundaries to show the plot'''),
     html.Div(["X axis bounds\n", "Lowest x:",
@@ -41,7 +41,7 @@ app.layout = html.Div(children=[
 
     html.Button(id='plot-button', n_clicks=0, children='Plot'),
     html.Div(children='''
-        Interact with the plot below.
+        Hover to see corresponding K-gain values.
     '''),
 
     dcc.Graph(
