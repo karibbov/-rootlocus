@@ -2,11 +2,17 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
-from src.root_locus import *
+from root_locus import *
+import flask
+import os
+from random import randint
+
+server = flask.Flask(__name__)
+server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, server=server,  external_stylesheets=external_stylesheets)
 
 app.layout = html.Div(children=[
     html.H1(children='Root Locus'),
@@ -76,4 +82,4 @@ def update_plot(submit, num_expr, denom_expr, x_low, x_up, y_low, y_up, k_max, k
 
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=8050, debug=False)
+    app.server.run(debug=False)
