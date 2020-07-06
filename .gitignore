@@ -21,3 +21,13 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+
+
+# Pycharm files
+vinv/**
+.idea/**
+
+# Docker files
+docker-compose.yml
+dockerfile
+.env
